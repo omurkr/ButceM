@@ -18,19 +18,27 @@ Bu projenin amacı, kullanıcıların fiş ve faturalarını dijital olarak sakl
 
 2. **Gereksinimlerin Yüklenmesi:**
     ```bash
-    pip install opencv-python pytesseract pyzbar numpy openai
+    pip install opencv-python pytesseract pyzbar numpy openai==0.28
     ```
 
 3. **Tesseract Kurulumu:**
-    - Tesseract OCR'ı sisteminize kurmanız gerekmektedir. [Tesseract Kurulumu](https://github.com/tesseract-ocr/tesseract)
+    - Tesseract OCR'ı sisteminize kurmanız gerekmektedir. [UB Mannheim'ın Tesseract sayfasından](https://github.com/UB-Mannheim/tesseract/wiki) Tesseract yükleyicisini indirin.
+    - Yükleyiciyi çalıştırın ve yükleme yolunu not edin (örneğin, `C:\Program Files\Tesseract-OCR\tesseract.exe`).
+    - Sistem Ortam Değişkenlerini Düzenleye giderek yükleme yolunu sisteminizin PATH ortam değişkenine ekleyin.( Gelişmiş -> Ortam Değişkenleri -> Path )
+    - Tesseract'ın optimize bir şekilde çalışması Türkçe dil dosyasını (tur.traineddata) indirin ve tessdata klasörünün içerisine atın. (https://github.com/tesseract-ocr/tessdata)
+    - Eğer PATH başarılı olmazsa, .exe'nin bulunduğu klasörü PATH'e ekleyin.('C:\Program Files\Tesseract-OCR')
+    - Eğer yine başarısız olursa VS Code editörünü yeniden başlatın.
 
 4. **OpenAI API Anahtarı:**
-    - OpenAI API anahtarınızı almanız gerekmektedir. [OpenAI API Anahtarı](https://beta.openai.com/signup/)
-    - Anahtarınızı [main.py](http://_vscodecontentref_/0) dosyasındaki [openai.api_key](http://_vscodecontentref_/1) değişkenine ekleyin.
+    - OpenAI API anahtarınızı almanız gerekmektedir. [OpenAI API Anahtarı](https://beta.openai.com/signup/) Güvenlik nedeniyle paylaşılan API keyler geçerliliğini yitirmektedir.
+    - Anahtarınızı [main.py](http://_vscodecontentref_/0) dosyasındaki [13.satır, openai.api_key](http://_vscodecontentref_/1) değişkenine ekleyin.
 
 ## IP Webcam Uygulaması
 
 Bu proje, IP Webcam uygulamasını kullanarak kameradan görüntü alır. IP Webcam uygulaması, Android cihazınızı bir IP kameraya dönüştürmenizi sağlar.
+Uygulamayı indirip açtığınızda size ekran üzerinde bir IP adresi tanımlayacaktır. Buradaki IP adresi, cihaz ve bağlantı tipine göre değişmektedir.
+Cihazınızın ve telefonunuzun aynı ağa bağlı olması gerekmektedir.
+Koddaki ilgili kısmı cihazının IP'sine göre ayarlayın. (113. satır, ip_adresi:'http://192.168.1.24:8080/video'/Örnektir)
 
 ### IP Webcam Uygulamasının İndirilmesi
 
@@ -47,7 +55,7 @@ IP Webcam uygulaması, Android cihazınızın kamerasını kullanarak görüntü
     - QR kodları ve fiş/fatura üzerindeki metinleri kameraya gösterin.
 
 2. **QR Kodları ve Fiş/Fatura Okuma:**
-    - QR kodları ve fiş/fatura üzerindeki metinler otomatik olarak okunacak ve işlenecektir.
+    - QR kodları üzerindeki metinler otomatik, fiş/fatura üzerindeki metinler "s" tuşuna basıldığında okunacak ve işlenecektir.
     - İşlenen veriler JSON formatında [veri.json](http://_vscodecontentref_/4) dosyasına kaydedilecektir.
 
 3. **GPT-3.5 ile Yorumlama:**
