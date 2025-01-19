@@ -10,7 +10,7 @@ from pyzbar.pyzbar import decode
 from datetime import datetime, timedelta
 
 # OpenAI API anahtarını ekliyoruz
-openai.api_key = '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'  # API Anahtarınızı buraya ekleyin
+openai.api_key = 'YOUR_API_KEY'  # API Anahtarınızı buraya ekleyin
 
 # QR kodlarından gelen veriyi temizlemek için fonksiyon
 def veri_temizle(qr_verisi):
